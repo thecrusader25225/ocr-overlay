@@ -76,16 +76,3 @@ OCR Overlay enables users to define regions on the screen, perform continuous OC
 ## Note
 
 - Performance drops according to parameters set
-
-
-## License
-
-MIT License
-
-
-
-
-
-
-
-
