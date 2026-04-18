@@ -1,0 +1,6 @@
+paddlepaddle==2.6.1
+paddleocr
+dxcam
+deep-translator
+opencv-python
+numpy
