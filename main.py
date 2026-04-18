@@ -5,7 +5,7 @@ import numpy as np
 import cv2
 import ctypes
 from ctypes import wintypes
-from PyQt5.QtCore import QAbstractNativeEventFilter, Qt, QTimer, QRect, QEvent
+from PyQt5.QtCore import QAbstractNativeEventFilter, Qt, QTimer, QRect, QEvent, QPoint
 from PyQt5.QtGui import QPainter, QColor, QFont
 from paddleocr import PaddleOCR
 from deep_translator import GoogleTranslator
@@ -23,7 +23,8 @@ def resource_path(relative_path):
     return os.path.join(os.path.abspath("."), relative_path)
 
 model_dir = resource_path("paddleocr")
-
+print("MODEL DIR:", model_dir)
+print("CONTENTS:", os.listdir(model_dir))
 ocr = PaddleOCR(
     use_angle_cls=True,
     lang='ch',
@@ -31,6 +32,7 @@ ocr = PaddleOCR(
     det_model_dir=os.path.join(model_dir, "det"),
     rec_model_dir=os.path.join(model_dir, "rec"),
     cls_model_dir=os.path.join(model_dir, "cls"),
+    download=False 
 )
 translator = GoogleTranslator(source='auto', target='en')
 
@@ -285,14 +287,26 @@ class ControlPanel(QWidget):
         self.overlay.update()
 
     def pick_color(self):
-        color = QColorDialog.getColor()
-        if color.isValid():
+        # temporarily lower overlay so dialog is usable
+        self.overlay.lower()
+
+        dlg = QColorDialog(self)
+        dlg.setWindowFlag(Qt.WindowStaysOnTopHint, True)
+        dlg.exec()
+
+        self.overlay.raise_()        
+        self.raise_()                
+        self.activateWindow()        
+
+        if dlg.selectedColor().isValid():
+            color = dlg.selectedColor()
             idx = self.region_list.currentRow()
             if idx >= 0:
                 self.state.regions[idx]["bg_color"] = (
                     color.red(), color.green(), color.blue(), 200
                 )
                 self.overlay.update()
+
     def update_metrics(self):
         cpu = psutil.cpu_percent()
         self.cpu_label.setText(f"CPU: {cpu}%")
@@ -376,7 +390,7 @@ class Overlay(QWidget):
 
         self.setWindowFlags(
             Qt.FramelessWindowHint |
-            Qt.WindowStaysOnTopHint | Qt.Tool | Qt.WindowDoesNotAcceptFocus 
+            Qt.WindowStaysOnTopHint | Qt.Tool  
         )
 
         self.setAttribute(Qt.WA_TranslucentBackground)
@@ -589,7 +603,6 @@ class Overlay(QWidget):
                     (x2, hy)
                 ]
 
-                from PyQt5.QtCore import QPoint
                 painter.drawPolygon(
                     QPoint(points[0][0], points[0][1]),
                     QPoint(points[1][0], points[1][1]),
