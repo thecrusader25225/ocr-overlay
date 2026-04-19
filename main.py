@@ -16,6 +16,8 @@ from PyQt5.QtWidgets import (
 from difflib import SequenceMatcher
 import psutil
 import os
+from opencc import OpenCC
+cc = OpenCC('t2s')  # Traditional → Simplified
 
 def resource_path(relative_path):
     if hasattr(sys, '_MEIPASS'):
@@ -336,7 +338,8 @@ def translate(text):
         return cache[key]
 
     try:
-        t = translator.translate(text)
+        simplified = cc.convert(text)
+        t = translator.translate(simplified)
         cache[key] = t
         return t
     except:
