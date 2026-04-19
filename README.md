@@ -9,7 +9,10 @@ OCR Overlay enables users to define regions on the screen, perform continuous OC
 
 <img width="1680" height="1050" alt="image" src="https://github.com/user-attachments/assets/6da8acc1-1e8e-4c24-91f0-8ad6ad504f7f" />
 
-https://github.com/user-attachments/assets/8a09986a-0450-4e85-bf87-6db52dc0288c
+
+
+https://github.com/user-attachments/assets/14be3eaf-ffc5-4e9b-9ba1-9aea92a21c28
+
 
 
 ## Features
