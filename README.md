@@ -7,6 +7,10 @@ A desktop overlay application for real-time text extraction and translation from
 
 OCR Overlay enables users to define regions on the screen, perform continuous OCR, and render translated text directly within those regions. The application is designed for minimal UI interference and efficient interaction.
 
+<img width="1680" height="1050" alt="image" src="https://github.com/user-attachments/assets/6da8acc1-1e8e-4c24-91f0-8ad6ad504f7f" />
+
+https://github.com/user-attachments/assets/8a09986a-0450-4e85-bf87-6db52dc0288c
+
 
 ## Features
 
@@ -76,3 +80,5 @@ OCR Overlay enables users to define regions on the screen, perform continuous OC
 ## Note
 
 - Performance drops according to parameters set
+- Currently supports translation from Chinese only.
+- Additional language support will be added soon.
