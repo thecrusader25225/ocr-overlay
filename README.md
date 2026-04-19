@@ -1,28 +1,56 @@
-# OCR Overlay
+# Real-Time Screen Translation Overlay (Chinese → English)
 
-A desktop overlay application for real-time text extraction and translation from selected screen regions.
+A desktop overlay application that performs **real-time OCR and translation directly on selected screen regions**, without switching between applications.
 
+Designed for workflows where text is **embedded in images, videos, or UI**, the system extracts and translates content in-place with minimal latency.
+
+Users can define multiple regions and receive translated output directly overlaid on the original content.
 
 ## Overview
 
 OCR Overlay enables users to define regions on the screen, perform continuous OCR, and render translated text directly within those regions. The application is designed for minimal UI interference and efficient interaction.
 
-<img width="1680" height="1050" alt="image" src="https://github.com/user-attachments/assets/6da8acc1-1e8e-4c24-91f0-8ad6ad504f7f" />
+
+### Demo — Honkai: Star Rail (2× speed)
 
 
 
-https://github.com/user-attachments/assets/14be3eaf-ffc5-4e9b-9ba1-9aea92a21c28
+https://github.com/user-attachments/assets/0d17e8d4-24f4-4054-9020-c28ddd33014f
+
+
+### Demo - Real-Time Conversation Translation (2x speed)
 
 
 
-## Features
+https://github.com/user-attachments/assets/07f30d68-24cb-4c06-b2b6-b6a9e95ece5c
 
-- Region-based screen OCR  
-- Real-time text recognition and translation  
-- Editable overlay regions (move and resize)  
-- Customizable background styling  
-- Global hotkey toggle (`Ctrl + 1`)  
-- Lightweight, non-intrusive overlay  
+
+
+## Key Features
+### Real-Time OCR
+- Continuous text detection from selected regions
+- Works across browsers, video players, PDFs, and apps
+
+### Text Normalization (Traditional → Simplified)
+- Automatically converts Traditional Chinese to Simplified before translation
+- Improves translation consistency and accuracy across mixed text sources
+- Ensures compatibility with translation models trained on Simplified corpora
+  
+### In-Place Translation Overlay
+- Translated text rendered directly over source
+- No workflow interruption
+
+### Multi-Region Support
+- Track multiple areas simultaneously
+- Independent parameter tuning per region
+
+### Stability Filtering
+- Prevents flickering from noisy OCR outputs
+- Updates only when text stabilizes
+
+### Lightweight Overlay System
+- Minimal UI interference
+- Transparent and non-intrusive
 
 
 ## Requirements
@@ -74,10 +102,10 @@ https://github.com/user-attachments/assets/14be3eaf-ffc5-4e9b-9ba1-9aea92a21c28
 
 ## Tech Stack
 
-- PyQt5  
-- PaddleOCR  
-- Deep Translator  
-- OpenCV / dxcam  
+- PyQt5 - UI & overlay rendering
+- PaddleOCR - optimized OCR (Chinese text)
+- Deep Translator - high-speed screen capture
+- OpenCV / dxcam - translation layer
 
 
 ## Note
