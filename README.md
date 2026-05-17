@@ -6,6 +6,9 @@ Designed for workflows where text is **embedded in images, videos, or UI**, the 
 
 Users can define multiple regions and receive translated output directly overlaid on the original content.
 
+## Architecture
+![Architecture](./assets/architecture.png)
+
 ## Overview
 
 OCR Overlay enables users to define regions on the screen, perform continuous OCR, and render translated text directly within those regions. The application is designed for minimal UI interference and efficient interaction.
